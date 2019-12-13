@@ -22,17 +22,23 @@ RCT_REMAP_METHOD(changeIcon, iconName:(NSString *)iconName resolver:(RCTPromiseR
     NSString *currentIcon = [[UIApplication sharedApplication] alternateIconName];
 
     if ([iconName isEqualToString:currentIcon]) {
-        reject(@"Error", @"Icon already in use", error);
-        RCTLog(@"Icon already in use");
         return;
     }
 
     resolve(@(YES));
 
-    // Custom icon
-    [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
-        RCTLog(@"%@", [error description]);
-    }];
+    NSMutableString *selectorString = [[NSMutableString alloc] initWithCapacity:40];
+    [selectorString appendString:@"_setAlternate"];
+    [selectorString appendString:@"IconName:"];
+    [selectorString appendString:@"completionHandler:"];
+
+    SEL selector = NSSelectorFromString(selectorString);
+    IMP imp = [[UIApplication sharedApplication] methodForSelector:selector];
+    void (*func)(id, SEL, id, id) = (void *)imp;
+    if (func)
+    {
+        func([UIApplication sharedApplication], selector, iconName, ^(NSError * _Nullable error) {});
+    }
 }
 
 @end
