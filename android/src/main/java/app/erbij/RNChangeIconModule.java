@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package app.erbij;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;

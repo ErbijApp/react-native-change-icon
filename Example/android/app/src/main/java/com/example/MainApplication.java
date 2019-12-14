@@ -8,7 +8,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import com.reactlibrary.RNChangeIconPackage;
+import app.erbij.RNChangeIconPackage;
 
 import java.util.Arrays;
 import java.util.List;

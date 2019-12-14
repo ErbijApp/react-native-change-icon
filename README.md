@@ -1,9 +1,9 @@
-
 # React Native Change Icon
 
 [![npm version](https://badge.fury.io/js/react-native-change-icon.svg)](https://badge.fury.io/js/react-native-change-icon)
 
 Change Application Icon Programmatically.
+
 - [x] iOS
 - [x] Android
 
@@ -27,24 +27,26 @@ Change Application Icon Programmatically.
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  - Add `import com.reactlibrary.RNChangeIconPackage;` to the imports at the top of the file
-  - Add `new RNChangeIconPackage()` to the list returned by the `getPackages()` method
+
+- Add `import app.erbij.RNChangeIconPackage;` to the imports at the top of the file
+- Add `new RNChangeIconPackage()` to the list returned by the `getPackages()` method
+
 2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-change-icon'
-  	project(':react-native-change-icon').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-change-icon/android')
-  	```
+   ```
+   include ':react-native-change-icon'
+   project(':react-native-change-icon').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-change-icon/android')
+   ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-change-icon')
-  	```
+   ```
+     compile project(':react-native-change-icon')
+   ```
 
 ## Usage
 
 #### iOS
 
 1. Open your project in Xcode and create an **App Icons** group inside you app's group.
-2. Add all the app icons you need inside this group with names like *icon@2x.png*, *icon@3x.png*.
+2. Add all the app icons you need inside this group with names like _icon@2x.png_, _icon@3x.png_.
 3. Your directory structure in Xcode would look like:
 
 ![Xcode Directory](images/App_Icons.png)
@@ -67,6 +69,7 @@ Change Application Icon Programmatically.
 ![Android Directory](images/Android_Icons.png)
 
 2. Modify your `AndroidManifest.xml` file's `<application>` tag as following:
+
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example">
@@ -110,11 +113,13 @@ Change Application Icon Programmatically.
 
 </manifest>
 ```
+
 You can create more `<activity-alias>` tags to make more alternate icons.
-*Note that the name in <activity-alias> should be "com.{package_name}.MainActivity%", where `%` is the icon name.*
+_Note that the name in <activity-alias> should be "com.{package_name}.MainActivity%", where `%` is the icon name._
 
 3. Open the `MainApplication.java` file.
 4. Pass `BuildConfig.APPLICATION_ID` to `new RNChangeIconPackage()` inside the `getPackages()` function.
+
 ```java
 @Override
 protected List<ReactPackage> getPackages() {
@@ -130,10 +135,10 @@ protected List<ReactPackage> getPackages() {
 Now you can use the following code to change application icon:
 
 ```javascript
-import { changeIcon } from 'react-native-change-icon';
+import { changeIcon } from "react-native-change-icon";
 
 // Pass the name of icon to be enabled
-changeIcon('icon_name');
+changeIcon("icon_name");
 ```
 
 `changeIcon` function returns a promise. The promise is resolved only when the icon is changed.

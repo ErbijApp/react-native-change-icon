@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package app.erbij;
 
 import java.util.Arrays;
 import java.util.Collections;
