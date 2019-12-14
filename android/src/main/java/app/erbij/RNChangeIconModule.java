@@ -35,7 +35,6 @@ public class RNChangeIconModule extends ReactContextBaseJavaModule {
         if (this.componentClass == null) this.componentClass = activity.getComponentName().getClassName();
         String activeClass = this.packageName + ".MainActivity" + enableIcon;
         if (this.componentClass.equals(activeClass)) {
-            promise.reject("Icon already in use.");
             return;
         }
         promise.resolve(true);
